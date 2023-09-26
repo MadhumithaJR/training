@@ -2,6 +2,7 @@ import React, {useState,useEffect} from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import ProductService from '../service/ProductService';
+import AuthenticationService from '../service/AuthenticationService';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 function Product() {
@@ -28,8 +29,11 @@ function Product() {
      */
 
      useEffect(() => {
-        fetchProducts();
-        }, []);
+        if(!AuthenticationService.isUserLoggedIn()){
+            history('/login');
+        } else {
+        fetchProducts(); }
+        });
 
     const fetchProducts = async () => {
         try {ProductService.getProducts().then((response) => {

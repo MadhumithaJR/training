@@ -56,4 +56,24 @@
   .nav-link {
     padding: 10px;
   }
+
+  .user-style{
+    font-weight: bold;
+    color: brown;
+    background-color: peachpuff;
+    position: absolute;
+    right: 30px;
+    width: 300px;
+    border: 3px solid whitesmoke;
+    padding: 10px;
+    
+  }
+  
+  .avatar {
+    width: 30px; /* Adjust the size of the avatar image as needed */
+    height: 30px;
+    border-radius: 50%;
+    position: absolute;
+    right: 260px;
+  }
 } 

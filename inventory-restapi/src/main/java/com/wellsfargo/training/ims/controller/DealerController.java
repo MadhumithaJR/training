@@ -58,7 +58,7 @@ public class DealerController {
 	}
 	
 	@PostMapping("/login")
-	public Boolean loginDealer(@Validated @RequestBody Dealer d)
+	public ResponseEntity<Boolean> loginDealer(@Validated @RequestBody Dealer d)
 			throws ResourceNotFoundException {
 		
 		Boolean isLoggedIn = false;
@@ -72,7 +72,7 @@ public class DealerController {
 		if(email.equals(dealer.getEmail()) && password.equals(dealer.getPassword())) {
 			isLoggedIn = true;	
 		}
-		return isLoggedIn;		
+		return ResponseEntity.ok(isLoggedIn);		
 	}
 	
 	@GetMapping("/dealers")

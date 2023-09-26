@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import ProductService from '../service/ProductService';
+import AuthenticationService from '../service/AuthenticationService';
 import '../styles/ProductSearch.css';
 
 const ProductSearch = () => {
@@ -11,6 +12,12 @@ const ProductSearch = () => {
     const [searchTerm, setSearchTerm] = useState('');
     const [products, setProducts] = useState([]);
     const [message, setMessage] = useState();
+
+    useEffect(() => {
+      if(!AuthenticationService.isUserLoggedIn()){
+        history('/login');
+    }  
+    });
 
     const handleSearch = async () => {
         try {

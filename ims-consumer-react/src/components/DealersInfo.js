@@ -11,8 +11,11 @@ function DealersInfo() {
     const [dealerInfo, setDealerInfo] = useState([]);
 
     useEffect(() => {
-        fetchDealerInfo();
-    }, []);
+      if(!AuthenticationService.isUserLoggedIn()){
+        history('/login');
+    } else {
+        fetchDealerInfo(); }
+    });
 
     const fetchDealerInfo = async () => {
         try{
